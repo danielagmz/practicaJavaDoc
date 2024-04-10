@@ -26,7 +26,7 @@ public class Menu {
     /**
      * vector que contiene 10 numeros
      */
-    private int [] vector = new int[10];
+    private int [] vector ;
     /**
      * matriz de 10x10
      */
@@ -51,7 +51,20 @@ public class Menu {
                 case 1:
                     //crear un vector
                     System.out.print("Entra la llargada del vector: ");
-                    int n = in.nextInt();
+                    int n = 0;
+                    try {
+                        n = in.nextInt();
+                        if (n!=0) {
+                            vector = new int[n];
+                        }else {
+                            throw new IllegalArgumentException("L'array ha de tenir una llargada");
+                        }
+
+                    } catch (NegativeArraySizeException e) {
+                        System.out.println("No pots tenir un array amb llargada negativa");
+                    } catch (IllegalArgumentException e1){
+                        System.out.println(e1.getMessage());
+                    }
                     crearVector(vector,n);
                     break;
                 case 2:
@@ -61,10 +74,14 @@ public class Menu {
                     break;
                 case 3:
                     //cercar números parells dins d'un vector
-                    if (hihaParells(vector)) {
-                        System.out.println("s'ha trobat números parells al vector");
-                        }
-                    else System.out.println("No s'ha trobat números parells!!!");
+                    try {
+                        if (hihaParells(vector)) {
+                            System.out.println("s'ha trobat números parells al vector");
+                            }
+                        else System.out.println("No s'ha trobat números parells!!!");
+                    } catch (NullPointerException e) {
+                        System.out.println("Primer has de crear un vector per cercar numeros a dins ");
+                    }
 
                     break;
                 case 4:
@@ -167,10 +184,15 @@ public class Menu {
      */
     public static void mostrarContingut(int [] vector){
         //PENDENT: aquesta funció està condicionada a l'execució d'alguna  de les funcions anteriors
-        int i=0;
-        while(vector[i]!='\0'){
-            System.out.print(vector[i]);
-            i++;
+        try {
+            int i=0;
+            for (int e : vector) {
+                System.out.print(e+" ");
+            }
+
+
+        } catch (NullPointerException e) {
+            System.out.println("Primer has de tenir un vector que mostrar!!");
         }
     }
 
