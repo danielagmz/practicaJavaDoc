@@ -24,7 +24,7 @@ public class Menu {
      */
     private int opcio;
     /**
-     * vector que contiene 10 numeros
+     * vector con el que se trabajara
      */
     private int [] vector ;
     /**
@@ -104,7 +104,7 @@ public class Menu {
     }
 
     /**
-     * omple una matriu que se le pase amb numeros aleatoris y els mostra
+     * omple una matriu que es pasi per parametre
      * @param matriu la matriu a omplir
      */
     private void omplirMatriu(int[][] matriu) {
