@@ -9,7 +9,7 @@ import java.util.Scanner;
 import java.lang.Math;
 
 /**
- * clase principal del proyecto
+ * clase menu que se llama para ejecutar el programa
  * @author daniela
  * @data 05/04/2024
  * @version 1.0
@@ -41,6 +41,7 @@ public class Menu {
             System.out.println("2. Parells i Senars");
             System.out.println("3. Trobar un número parell");
             System.out.println("4. Mostrar contingut");
+            System.out.println("5. Generar matriu aleatoria");
             System.out.println("0. Acabar");
             System.out.print("Entra una opció(0-4): ");
             opcio = in.nextInt();
@@ -70,6 +71,10 @@ public class Menu {
                     //mostrar el contingut del vector
                     mostrarContingut(vector);
                     break;
+                case 5:
+                    //mostrar el contingut del vector
+                    omplirMatriu(matriu);
+                    break;
                 case 0:
                     System.out.println("Gràcies. Fins la propera!");
                     break;
@@ -77,7 +82,23 @@ public class Menu {
                     System.out.println("ATENCIÓ!!! \nHa de ser un valor entre 0 i 4");
 
             }
+            System.out.println();
         }while(opcio != 0);
+    }
+
+    /**
+     * omple una matriu que se le pase amb numeros aleatoris y els mostra
+     * @param matriu la matriu a omplir
+     */
+    private void omplirMatriu(int[][] matriu) {
+        //ToDo incloure aquesta funcio a la de parellsoSenars() perque es mostri la matriu avanç de contar
+        for (int i = 0; i < matriu.length ; i++) {
+            for (int j = 0; j < matriu[0].length; j++) {
+                matriu[i][j]=(int)Math.floor(Math.random()*10);
+                System.out.print(matriu[i][j]+" ");
+            }
+            System.out.println();
+        }
     }
 
     /**
@@ -87,9 +108,10 @@ public class Menu {
      */
 
     public static void crearVector(int []vector,int n){
+
         for (int i = 0; i < n; i++) { //omplim vector
             vector[i] = (int)Math.floor(Math.random()*10);
-            System.out.print(vector[i]);
+            System.out.print(vector[i]+" ");
         }
     }
 
